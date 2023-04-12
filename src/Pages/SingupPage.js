@@ -1,11 +1,13 @@
 import React from "react";
+import SignupContainer from "../Containers/auth/SignupContainer";
+import AuthTemplate from "../Components/auth/AuthTemplate";
 
 function SignupPage(props) {
     return (
-        <div>
-            회원가입 페이지
-        </div>
-    )
+        <AuthTemplate>
+            <SignupContainer />
+        </AuthTemplate>
+    );
 }
 
 export default SignupPage;
