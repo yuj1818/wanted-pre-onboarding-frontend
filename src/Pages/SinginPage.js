@@ -1,10 +1,12 @@
 import React from "react";
+import SigninContainer from "../Containers/auth/SigninContainer";
+import AuthTemplate from "../Components/auth/AuthTemplate";
 
 function SigninPage(props) {
     return (
-        <div>
-            로그인 페이지
-        </div>
+        <AuthTemplate>
+            <SigninContainer />
+        </AuthTemplate>
     )
 }
 
