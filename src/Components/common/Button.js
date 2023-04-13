@@ -18,20 +18,10 @@ const buttonStyle = css`
     background: white;
     &:hover {
         background: lightslategray;
-    }
-
-    ${props =>
-        props.gray &&
-        css`
-            background: #d9d9d9;
-            &:hover {
-                background: lightslategray;
-                &:disabled {
-                    background: #D9D9D9;
-                    cursor: not-allowed;
-                }
-            }
-        `
+        &:disabled {
+            background: #D9D9D9;
+            cursor: not-allowed;
+        }
     }
 `;
 

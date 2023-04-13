@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Button from "../common/Button";
+import useEmail from "../../utils/hooks/useEmail";
+import usePassword from "../../utils/hooks/usePassword";
 
 const AuthFormBlock = styled.div`
     .title {
@@ -54,33 +56,41 @@ const textMap = {
     register: '회원가입',
 };
 
-function AuthForm({type}) {
+function AuthForm({type, onSubmit}) {
+
     const text = textMap[type];
+
+    const {email, isValidatedEmail, onChangeValidatedEmail} = useEmail();
+    const {password, isValidatedPassword, onChangeValidatedPassword} = usePassword();
+
     return (
         <AuthFormBlock>
             <div className="title">{text}</div>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className="input">
                     <div className="subtitle">E-mail</div>
                     <StyledInput
                         data-testid="email-input"
-                        autoComplete="m_email"
-                        name="m_email"
+                        name="email"
                         placeholder="이메일을 입력해주세요"
+                        value={email}
+                        onChange={onChangeValidatedEmail}
                     />
                 </div>
                 <div className="input">
                     <div className="subtitle">PW</div>
                     <StyledInput
                         data-testid="password-input"
-                        autoComplete="new-password"
-                        name="m_password"
+                        name="password"
                         placeholder="비밀번호를 입력해주세요"
                         type="password"
+                        value={password}
+                        onChange={onChangeValidatedPassword}
                     />
                 </div>
                 <Button
                     data-testid={type === 'register' ? "signup-button" : "signin-button"}
+                    disabled={isValidatedEmail && isValidatedPassword ? false : true}
                 >
                     {text}
                 </Button>
