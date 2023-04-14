@@ -2,6 +2,8 @@ import axios from "axios";
 
 const client = axios.create();
 
+//로그인, 회원가입
+
 export const signUp = async ({email, password}) => {
     try {
         await client.post('auth/signup', {email, password});
@@ -19,5 +21,42 @@ export const signIn = async ({email, password}) => {
         return response.data.access_token;
     } catch(error) {
         return;
+    }
+}
+
+//todo
+
+const token = `Bearer ${localStorage.getItem('token')}`;
+
+export const createTodo = async (todo) => {
+    try {
+        await client.post('todos', {todo}, {headers:{Authorization: token}});
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export const getTodos = async () => {
+    try {
+        const response = await client.get('todos', {headers:{Authorization: token}});
+        return response.data;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export const updateTodos = async ({id, todo, isCompleted}) => {
+    try {
+        await client.put(`todos/${id}`, {todo, isCompleted}, {headers:{Authorization: token}});
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export const deleteTodos = async (id) => {
+    try {
+        await client.delete(`todos/${id}`, {headers:{Authorization: token}});
+    } catch(error) {
+        console.log(error);
     }
 }

@@ -1,10 +1,9 @@
 import React from "react";
+import TodoContainer from "../Containers/todo/TodoContainer";
 
 function TodoPage(props) {
     return (
-        <div>
-            투두리스트
-        </div>
+        <TodoContainer />
     )
 }
 
