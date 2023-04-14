@@ -11,7 +11,9 @@ function isUser (SpecificComponent, option=null) {
                     navigate("/todo");
                 } 
             } else {
-                navigate("/signin");
+                if(option){
+                    navigate("/signin");
+                }
             }
         },[])
 
