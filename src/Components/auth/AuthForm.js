@@ -56,7 +56,14 @@ const textMap = {
     register: '회원가입',
 };
 
-function AuthForm({type, onSubmit}) {
+const ErrorMessage = styled.div`
+    color: red;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+`;
+
+function AuthForm({type, onSubmit, errorMessage}) {
 
     const text = textMap[type];
 
@@ -88,6 +95,7 @@ function AuthForm({type, onSubmit}) {
                         onChange={onChangeValidatedPassword}
                     />
                 </div>
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                 <Button
                     data-testid={type === 'register' ? "signup-button" : "signin-button"}
                     disabled={isValidatedEmail && isValidatedPassword ? false : true}
