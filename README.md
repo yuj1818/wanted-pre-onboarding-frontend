@@ -6,4 +6,4 @@ $ npm start
 ```
 
 ## 데모 영상
-https://vercel.com/yuj1818/yj-wanted-pre-onboarding-frontend
+demo.gif 파일 참고
