@@ -2,6 +2,8 @@ import axios from "axios";
 
 const client = axios.create();
 
+let token
+
 //로그인, 회원가입
 
 export const signUp = async ({email, password}) => {
@@ -18,15 +20,15 @@ export const signIn = async ({email, password}) => {
     try {
         const response = await client.post('auth/signin', {email, password});
         localStorage.setItem('token',response.data.access_token);
-        return response.data.access_token;
+        token = `Bearer ${response.data.access_token}`;
+        return true;
     } catch(error) {
         return;
     }
 }
 
 //todo
-
-const token = `Bearer ${localStorage.getItem('token')}`;
+token = `Bearer ${localStorage.getItem('token')}`;
 
 export const createTodo = async (todo) => {
     try {

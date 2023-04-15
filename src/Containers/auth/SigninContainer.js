@@ -15,7 +15,7 @@ function SigninContainer(props) {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        //success: 토큰
+        //success: true
         //fail: 없음
         const response = await signIn({email, password});
 
