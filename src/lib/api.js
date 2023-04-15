@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const client = axios.create();
+const client = axios.create({
+    baseURL: "https://www.pre-onboarding-selection-task.shop/"
+});
 
 let token
 
